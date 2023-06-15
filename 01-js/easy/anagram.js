@@ -8,7 +8,18 @@
 */
 
 function isAnagram(str1, str2) {
-
+  let _str1 = str1.replace(/ /g, "");
+  let _str2 = str2.replace(/ /g, "");
+  if (_str1?.length === _str2?.length) {
+    _str1 = _str1.toLowerCase().split("").sort().join("");
+    _str2 = _str2.toLowerCase().split("").sort().join("");
+    if (_str1 === _str2) {
+      return true;
+    }
+  }
+  return false;
 }
 
-module.exports = isAnagram;
+module.exports = {
+  isAnagram,
+};

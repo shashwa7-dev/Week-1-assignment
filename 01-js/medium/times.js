@@ -8,5 +8,19 @@ Hint - use Date class exposed in JS
 */
 
 function calculateTime(n) {
-    return 0.01;
+  let total = 0;
+  let preLoopExcTime = Date.now();
+  let preLoopAPIExcTime = performance.now();
+  for (let i = 1; i <= n; i++) {
+    total += i;
+  }
+  let postLoopExcTime = Date.now() - preLoopExcTime;
+  return {
+    custom_api: postLoopExcTime + "ms",
+    web_api: performance.now() - preLoopAPIExcTime + "ms",
+  };
 }
+
+module.exports = {
+  calculateTime,
+};

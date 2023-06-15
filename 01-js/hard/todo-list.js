@@ -12,7 +12,34 @@
 */
 
 class Todo {
-
+  constructor() {
+    this.todos = [];
+  }
+  add(todo) {
+    this.todos.push(todo);
+  }
+  remove(todoID) {
+    this.todos = this.todos.filter((todo) => todo.id !== todoID);
+  }
+  update(todoID, todoBody) {
+    this.todos = this.todos.map((todo) => {
+      if (todo.id === todoID) {
+        return todoBody;
+      }
+      return todo;
+    });
+  }
+  getTodo(todoID) {
+    let todo = this.todos.filter((todo) => todo.id === todoID)[0];
+    if (todo) return todo;
+    return "no todo found!";
+  }
+  getAll() {
+    return this.todos;
+  }
+  clear() {
+    this.todos = [];
+  }
 }
 
-module.exports = Todo;
+module.exports = { Todo };

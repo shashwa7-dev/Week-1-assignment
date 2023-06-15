@@ -7,7 +7,14 @@
 */
 
 function isPalindrome(str) {
-  return true;
+  const sanitizedStr = str.toLowerCase().replace(/ /g, "");
+  const sanitizedStrArr = sanitizedStr.split("");
+  let tmpStr = "";
+  for (i = sanitizedStr.length - 1; i >= 0; i--) {
+    tmpStr += sanitizedStrArr[i];
+  }
+  console.log(`${tmpStr} <-> ${sanitizedStr}`);
+  return tmpStr === sanitizedStr;
 }
 
-module.exports = isPalindrome;
+module.exports = { isPalindrome };
